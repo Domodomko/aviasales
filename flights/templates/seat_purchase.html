@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Покупка места</title>
+    {{ request.comment|safe }}
+</head>
+<body style="font-family: Arial; font-size: 18px">
+    {% if fail_message %}
+        <h1>{{ fail_message }}</h1>
+    {% else %}
+        <h1>Покупка места {{ seat.number }} для Рейса "{{seat.flight}}"</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="fieldWrapper">
+                {{ field.errors }}
+                {{ field.label_tag }} {{ field }}
+            </div>
+            {% endfor %}
+            <input type="submit">
+        </form>
+    {% endif %}
+</body>
+<style>
+    .fieldWrapper {
+        margin-bottom: 30px;
+    }
+</style>

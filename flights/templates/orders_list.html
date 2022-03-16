@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Заказы</title>
+    {{ request.comment|safe }}
+</head>
+<body style="font-family: Arial; font-size: 18px">
+    <h1>Заказы</h1>
+    <form action="" method="get" id="filter_form">
+        <label>С: </label>
+        <input type="date" name="starts_at" value="{{ request.GET.starts_at }}" id="date_field">
+        <label>По: </label>
+        <input type="date" name="ends_at" value="{{ request.GET.ends_at }}" id="date_field_2">
+        <button id="submit">Отфильтровать</button>
+        <button onclick="event.preventDefault(); document.querySelector('#date_field').value=null; document.querySelector('#date_field_2').value=null;">Сбросить фильтры</button>
+    </form>
+    <h2>Итоговая выручка: {{ orders_sum|default:"0" }} $</h2>
+    <ul class="flights_list">
+        {% for order in orders_list %}
+        <li class="flights_list__item" {% if not order.is_active %}style="background-color: grey;"{% endif %}> 
+            <div>Заказ №{{ order.pk }}</div>
+            <div>Итоговая сумма: {{ order.total_price }}$</div>
+            <br>
+            <div>{% if order.is_active %}Активный{% else %}Возвращён{% endif %}</div>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+<style>
+    .flights_list {
+        list-style-type: none;
+    }
+
+    .flights_list__item {
+        margin-bottom: 10px;
+        border: black solid 1px;
+        width: fit-content;
+        padding: 20px;
+        padding-right: 200px;
+    }
+</style>
+</html>

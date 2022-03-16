@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Спасибо за покупку!</title>
+    {{ request.comment|safe }}
+</head>
+<body style="font-family: Arial; font-size: 18px">
+    <h1>Спасибо за покупку!</h1>
+    <p>{{ order }}</p>
+    <p>{{ order.seat }}</p>
+    <p>Введите номер заказа на странице возврата, чтобы вернуть билет, или перейдите по ссылке ниже.</p>
+    <a href="{% url 'order-return' %}?order={{ order.pk }}">ВЕРНУТЬ БИЛЕТ</a>
+</body>
+</html>

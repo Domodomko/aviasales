@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Возврат билета</title>
+    {{ request.comment|safe }}
+</head>
+<body style="font-family: Arial; font-size: 18px">
+    {% if not fail_message %}
+    <h1>Возврат билета #{{ order.pk }} был успешен!</h1>
+    {% else %}
+    <h1>{{ fail_message }}</h1>
+    {% endif %}
+</body>
+</html>

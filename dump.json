@@ -1,0 +1,307 @@
+[
+  {
+    "model": "flights.flight",
+    "pk": 1,
+    "fields": {
+      "airline": 2,
+      "departure_city": 1,
+      "landing_city": 3,
+      "departure_date": "2021-12-08T15:34:20Z",
+      "landing_date": "2021-12-09T15:34:33Z",
+      "flight_class": 3,
+      "price_per_seat": 300.0
+    }
+  },
+  {
+    "model": "flights.flight",
+    "pk": 2,
+    "fields": {
+      "airline": 3,
+      "departure_city": 3,
+      "landing_city": 4,
+      "departure_date": "2021-12-04T15:34:20Z",
+      "landing_date": "2021-12-05T15:34:33Z",
+      "flight_class": 2,
+      "price_per_seat": 100.0
+    }
+  },
+  {
+    "model": "flights.flight",
+    "pk": 3,
+    "fields": {
+      "airline": 2,
+      "departure_city": 1,
+      "landing_city": 3,
+      "departure_date": "2021-12-08T15:34:20Z",
+      "landing_date": "2021-12-09T15:34:33Z",
+      "flight_class": 3,
+      "price_per_seat": 300.0
+    }
+  },
+  {
+    "model": "flights.flight",
+    "pk": 4,
+    "fields": {
+      "airline": 1,
+      "departure_city": 1,
+      "landing_city": 2,
+      "departure_date": "2021-12-01T15:34:20Z",
+      "landing_date": "2021-12-02T15:34:33Z",
+      "flight_class": 3,
+      "price_per_seat": 200.0
+    }
+  },
+  {
+    "model": "flights.airline",
+    "pk": 1,
+    "fields": {
+      "name": "Азимут"
+    }
+  },
+  {
+    "model": "flights.airline",
+    "pk": 2,
+    "fields": {
+      "name": "Аэрофлот"
+    }
+  },
+  {
+    "model": "flights.airline",
+    "pk": 3,
+    "fields": {
+      "name": "Azur Air"
+    }
+  },
+  {
+    "model": "flights.city",
+    "pk": 1,
+    "fields": {
+      "name": "Бишкек",
+      "country": 1
+    }
+  },
+  {
+    "model": "flights.city",
+    "pk": 2,
+    "fields": {
+      "name": "Ош",
+      "country": 1
+    }
+  },
+  {
+    "model": "flights.city",
+    "pk": 3,
+    "fields": {
+      "name": "Москва",
+      "country": 2
+    }
+  },
+  {
+    "model": "flights.city",
+    "pk": 4,
+    "fields": {
+      "name": "Санкт-Петербург",
+      "country": 2
+    }
+  },
+  {
+    "model": "flights.country",
+    "pk": 1,
+    "fields": {
+      "name": "Кыргызстан"
+    }
+  },
+  {
+    "model": "flights.country",
+    "pk": 2,
+    "fields": {
+      "name": "Россия"
+    }
+  },
+  {
+    "model": "flights.seat",
+    "pk": 1,
+    "fields": {
+      "flight": 1,
+      "number": "A1"
+    }
+  },
+  {
+    "model": "flights.seat",
+    "pk": 2,
+    "fields": {
+      "flight": 1,
+      "number": "A2"
+    }
+  },
+  {
+    "model": "flights.seat",
+    "pk": 3,
+    "fields": {
+      "flight": 1,
+      "number": "B1"
+    }
+  },
+  {
+    "model": "flights.seat",
+    "pk": 4,
+    "fields": {
+      "flight": 1,
+      "number": "B2"
+    }
+  },
+  {
+    "model": "flights.seat",
+    "pk": 5,
+    "fields": {
+      "flight": 1,
+      "number": "C1"
+    }
+  },
+  {
+    "model": "flights.seat",
+    "pk": 6,
+    "fields": {
+      "flight": 1,
+      "number": "C2"
+    }
+  },
+  {
+    "model": "flights.seat",
+    "pk": 7,
+    "fields": {
+      "flight": 2,
+      "number": "A1"
+    }
+  },
+  {
+    "model": "flights.seat",
+    "pk": 8,
+    "fields": {
+      "flight": 2,
+      "number": "A2"
+    }
+  },
+  {
+    "model": "flights.seat",
+    "pk": 9,
+    "fields": {
+      "flight": 2,
+      "number": "B1"
+    }
+  },
+  {
+    "model": "flights.seat",
+    "pk": 10,
+    "fields": {
+      "flight": 2,
+      "number": "B2"
+    }
+  },
+  {
+    "model": "flights.seat",
+    "pk": 11,
+    "fields": {
+      "flight": 3,
+      "number": "A1"
+    }
+  },
+  {
+    "model": "flights.seat",
+    "pk": 12,
+    "fields": {
+      "flight": 3,
+      "number": "A2"
+    }
+  },
+  {
+    "model": "flights.seat",
+    "pk": 13,
+    "fields": {
+      "flight": 3,
+      "number": "B1"
+    }
+  },
+  {
+    "model": "flights.seat",
+    "pk": 14,
+    "fields": {
+      "flight": 3,
+      "number": "B2"
+    }
+  },
+  {
+    "model": "flights.seat",
+    "pk": 15,
+    "fields": {
+      "flight": 4,
+      "number": "A1"
+    }
+  },
+  {
+    "model": "flights.seat",
+    "pk": 16,
+    "fields": {
+      "flight": 4,
+      "number": "A2"
+    }
+  },
+  {
+    "model": "flights.seat",
+    "pk": 17,
+    "fields": {
+      "flight": 4,
+      "number": "B1"
+    }
+  },
+  {
+    "model": "flights.seat",
+    "pk": 18,
+    "fields": {
+      "flight": 4,
+      "number": "B2"
+    }
+  },
+  {
+    "model": "flights.seat",
+    "pk": 19,
+    "fields": {
+      "flight": 4,
+      "number": "C1"
+    }
+  },
+  {
+    "model": "flights.seat",
+    "pk": 20,
+    "fields": {
+      "flight": 4,
+      "number": "C2"
+    }
+  },
+  {
+    "model": "flights.order",
+    "pk": 1,
+    "fields": {
+      "seat": 1,
+      "email": "example@mail.com",
+      "phonenumber": "+996123123123",
+      "contact_face": "Василий Юрдашев",
+      "created_at": "2021-12-08T15:37:04.652Z"
+    }
+  },
+  {
+    "model": "flights.passangerbio",
+    "pk": 1,
+    "fields": {
+      "order": 1,
+      "first_name": "Игорь",
+      "last_name": "Маркело",
+      "patronymic": "Игоревич",
+      "gender": 1,
+      "date_of_birth": "2000-12-07",
+      "citizenship_country": 1,
+      "document": "Пасспорт",
+      "document_id": "12312313121"
+    }
+  }
+]

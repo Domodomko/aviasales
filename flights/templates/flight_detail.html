@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Рейс #{{ flight.pk }}</title>
+    {{ request.comment|safe }}
+</head>
+<body style="font-family: Arial; font-size: 18px">
+    {% comment %} <header style="background-color: black; color: white; display: block; height: 40px; font-weight: 800">
+        <ul style = "list-style-type: none; padding-top: 6px;">
+            {% for item in nav_bar %}
+            <li style="display: inline; margin: 0 20px;"> <a href="{{item.link}}" style="text-decoration: none; color:inherit">{{item.name}}</a></li>
+            {% endfor %}
+        </ul>
+    </header> {% endcomment %}
+
+    <h1>Рейс #{{ flight.pk }}</h1>
+    <ul class="flights_list">
+        <li class="flights_list__item"> 
+            <a style="text-decoration: none;">
+                <div>Авиакомпания: {{ flight.airline }}</div>
+                <div>{{ flight.get_flight_class_display }}</div>
+                <div>Город вылета: {{flight.departure_city}}</div>
+                <div>Дата и время вылета: {{flight.departure_date}}</div>
+                <div>Город посадки: {{flight.landing_city}}</div>
+                <div>Дата и время посадки: {{flight.landing_date}}</div>
+                <div>Оставшихся мест: {{ flight.free_seats }}</div>
+                <div>Цена за место: {{ flight.price_per_seat }} $ (для несовершеннолетних : {{ flight.price_per_seat_underage|default_if_none:flight.price_per_seat }} $)</div>
+            </a>
+        </li>
+    </ul>
+    <h2>Места: </h2>
+    <p>Нажмите на номер, чтобы приобрести место: </p>
+    <ul class="seats_list">
+        {% for seat in flight.seats.all %}
+        <li class="seats_list__item{% if seat.is_bought %} bought{% endif %}">
+            <a style="text-decoration: none;" {% if not seat.is_bought %} href="{% url 'seat-purchase' %}?seat={{ seat.pk }}"{% endif %}>
+            {{ seat.number }}
+            <a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+<style>
+    .flights_list {
+        list-style-type: none;
+    }
+
+    .flights_list__item {
+        margin-bottom: 10px;
+        border: black solid 1px;
+        width: fit-content;
+        padding: 20px;
+        padding-right: 200px;
+    }
+
+    .seats_list {
+    }
+
+    .seats_list__item {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .seats_list__item a {
+        color: black;
+    }
+
+    .seats_list__item.bought {
+        color: grey !important;
+        text-decoration: line-through;
+    }
+
+    .seats_list__item.bought a {
+        color: grey !important;
+    }
+</style>
+</html>

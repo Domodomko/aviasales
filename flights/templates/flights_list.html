@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Рейсы</title>
+    {{ request.comment|safe }}
+</head>
+<body style="font-family: Arial; font-size: 18px">
+    <h1>Рейсы</h1>
+    <form action="" method="get" id="filter_form">
+        <label>Вылет: </label>
+        <select name="departure_city" id="city_field">
+            <option value="">Любой</option> 
+            {% for city in cities %}
+            <option value="{{ city.pk }}"{% if request.GET.departure_city|floatformat:"0" == city.pk|floatformat:"0" %} selected{% endif %}>{{ city.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="date" name="departure_date" value="{{ request.GET.departure_date }}" id="date_field">
+        <label>Посадка: </label>
+        <select name="landing_city" id="city_field_2">
+            <option value="">Любой</option> 
+            {% for city in cities %}
+            <option value="{{ city.pk }}"{% if request.GET.landing_city|floatformat:"0" == city.pk|floatformat:"0" %} selected{% endif %}>{{ city.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="date" name="landing_date" value="{{ request.GET.landing_date }}" id="date_field_2">
+        <button id="submit">Отфильтровать</button>
+        <button onclick="event.preventDefault(); document.querySelector('#date_field').value=null; document.querySelector('#date_field_2').value=null; document.querySelector('#city_field').value=''; document.querySelector('#city_field_2').value=''">Сбросить фильтры</button>
+    </form>
+    <ul class="flights_list">
+        {% for flight in flights_list %}
+        <li class="flights_list__item"> 
+            <a style="text-decoration: none; color: black;" href="{% url 'flight-detail' pk=flight.pk %}">
+                <div>Авиакомпания: {{flight.airline}}</div>
+                <div>{{ flight.get_flight_class_display }}</div>
+                <div>Город вылета: {{flight.departure_city}}</div>
+                <div>Дата и время вылета: {{flight.departure_date}}</div>
+                <div>Город посадки: {{flight.landing_city}}</div>
+                <div>Дата и время посадки: {{flight.landing_date}}</div>
+                <div>Оставшихся мест: {{ flight.free_seats }}</div>
+                <div>Цена за место: {{ flight.price_per_seat }} $ (для несовершеннолетних : {{ flight.price_per_seat_underage|default_if_none:flight.price_per_seat }} $)</div>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+<style>
+    .flights_list {
+        list-style-type: none;
+    }
+
+    .flights_list__item {
+        margin-bottom: 10px;
+        border: black solid 1px;
+        width: fit-content;
+        padding: 20px;
+        padding-right: 200px;
+    }
+</style>
+</html>
